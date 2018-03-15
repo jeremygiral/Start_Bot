@@ -11,6 +11,7 @@ router.use(
 router.use(bodyParser.json());
 
 router.post("/echo", function(req, res) {
+  console.log(req.body);
   if (req.body.result.parameters.Reponse1){
     var rep1=req.body.result.parameters.Reponse1
     if (rep1.toLowerCase==="oui"){
