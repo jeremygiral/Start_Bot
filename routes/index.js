@@ -18,7 +18,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(function(reque
     return response.status(400).end('Invalid Webhook Request (expecting v1 or v2 webhook request)');
   }
 });
-var app = new DialogflowApp();
+//var app = new DialogflowApp();
 
 function processV2Request (request, response) {
   // An action is a string used to identify what needs to be done in fulfillment
