@@ -51,7 +51,7 @@ function processV2Request (request, response) {
              paramNon: request.body.queryResult.queryText
            }*/
 
-           "followupEvent": {
+           "followup_event_input": {
              "name": "Welcome"
            }
 
@@ -88,7 +88,7 @@ function processV2Request (request, response) {
         responseJson.outputContexts = responseToUser.outputContexts;
       }
       if(responseToUser.followupEvent){
-        responseJson.followupEvent=responseToUser.followupEvent;
+        responseJson.followup_event_input=responseToUser.followup_event_input;
       }
       // Send the response to Dialogflow
       console.log('Response to Dialogflow: ' + JSON.stringify(responseJson));
