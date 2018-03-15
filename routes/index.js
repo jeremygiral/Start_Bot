@@ -69,14 +69,14 @@ router.post("/echo", function(req, res) {
   }*/
   if (req.body.result.parameters.Reponse1){
     var rep1=req.body.result.parameters.Reponse1
-    if (rep1==="Oui"){
+    if (rep1.toLowerCase==="oui"){
       /*return res.json({
       speech: "Très bien, où en êtes vous dans la construction de votre Business Plan ? ( Commencement/ En Cours / En finition )",
       displayText: speech+'\n'+testparam+'\n'+testaction+'\n'+testcontext,
     });*/
     return res.json({
       "followupEvent": {
-        "name": "Question2",
+        "name": "Question1",
         "data": {
           "reponse1":rep1
         }
@@ -91,7 +91,7 @@ router.post("/echo", function(req, res) {
       });*/
       return res.json({
         "followupEvent": {
-          "name": "Question2",
+          "name": "Question1",
           "data": {
             "reponse1":rep1
           }
