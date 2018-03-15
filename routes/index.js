@@ -32,7 +32,7 @@ function processV2Request (request, response) {
   outputContexts.forEach(function(con){
     Contexts.push(con.name.substr(con.name.indexOf("contexts/")+9,con.name.lenght));
   });
-  console.console.log(Contexts);
+  console.log(Contexts);
   //console.log('Contexts ' + JSON.stringify(outputContexts));
   // Get the request source (Google Assistant, Slack, API, etc)
   var requestSource = (request.body.originalDetectIntentRequest) ? request.body.originalDetectIntentRequest.source : undefined;
