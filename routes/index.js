@@ -27,11 +27,12 @@ function processV2Request (request, response) {
   var parameters = request.body.queryResult.parameters || {}; // https://dialogflow.com/docs/actions-and-parameters
   // Contexts are objects used to track and store conversation state
   var inputContexts = request.body.queryResult.contexts;
-
+  var Contexts=[];
   var outputContexts = request.body.queryResult.outputContexts || "ya rien"; // https://dialogflow.com/docs/contexts
   outputContexts.forEach(function(con){
-    console.log(con.name.substr(con.name.indexOf("contexts/")+8,con.name.lenght));
+    Contexts.push(con.name.substr(con.name.indexOf("contexts/")+9,con.name.lenght));
   });
+  console.console.log(Contexts);
   //console.log('Contexts ' + JSON.stringify(outputContexts));
   // Get the request source (Google Assistant, Slack, API, etc)
   var requestSource = (request.body.originalDetectIntentRequest) ? request.body.originalDetectIntentRequest.source : undefined;
