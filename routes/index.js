@@ -45,15 +45,15 @@ function processV2Request (request, response) {
     // Default handler for unknown or undefined actions
     'default': function(){
        responseToUser = {
-         /*"followup_event_input": {
-           name: "FNon",
+         "followup_event_input": {
+           name: "FNoon",
            parameters: {
-             paramNon: request.body.queryResult.queryText
-           }*/
-
-           "followup_event_input": {
-             "name": "Welcome"
+             paramNon:"Ouiiiiiiiiiii"
            }
+         }
+           /*"followup_event_input": {
+             "name": "Welcome"
+           }*/
 
         //fulfillmentMessages: richResponsesV2, // Optional, uncomment to enable
         //outputContexts: [{ 'name': `${session}/contexts/weather`, 'lifespanCount': 2, 'parameters': {'city': 'Rome'} }], // Optional, uncomment to enable
