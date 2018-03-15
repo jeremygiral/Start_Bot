@@ -52,10 +52,7 @@ function processV2Request (request, response) {
            }*/
 
            "followupEvent": {
-             "name": "FNon",
-             "data": {
-               "paramNon":"Noooon"
-             }
+             "name": "Welcome"
            }
 
         //fulfillmentMessages: richResponsesV2, // Optional, uncomment to enable
