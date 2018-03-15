@@ -74,6 +74,7 @@ router.post("/echo", function(req, res) {
       speech: "Très bien, où en êtes vous dans la construction de votre Business Plan ? ( Commencement/ En Cours / En finition )",
       displayText: speech+'\n'+testparam+'\n'+testaction+'\n'+testcontext,
     });*/
+    console.log("ok webhook oui");
     return res.json({
       "followupEvent": {
         "name": "Question3",
