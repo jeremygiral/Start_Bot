@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 
 
 var functions = require('firebase-functions'); // Cloud Functions for Firebase library
-var DialogflowApp = require('actions-on-google').DialogflowApp; // Google Assistant helper library
+//var DialogflowApp = require('actions-on-google').DialogflowApp; // Google Assistant helper library
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest(function(request, response){
   console.log('Dialogflow Request headers: ' + JSON.stringify(request.headers));
   console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
