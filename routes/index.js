@@ -45,12 +45,19 @@ function processV2Request (request, response) {
     // Default handler for unknown or undefined actions
     'default': function(){
        responseToUser = {
-         "followup_event_input": {
+         /*"followup_event_input": {
            name: "FNon",
            parameters: {
              paramNon: request.body.queryResult.queryText
+           }*/
+
+           "followupEvent": {
+             "name": "FNon",
+             "data": {
+               "paramNon":"Noooon"
+             }
            }
-         }
+
         //fulfillmentMessages: richResponsesV2, // Optional, uncomment to enable
         //outputContexts: [{ 'name': `${session}/contexts/weather`, 'lifespanCount': 2, 'parameters': {'city': 'Rome'} }], // Optional, uncomment to enable
        //fulfillmentText: 'This is from Dialogflow\'s Cloud Functions for Firebase editor! :-)' // displayed response
@@ -83,8 +90,8 @@ function processV2Request (request, response) {
       if (responseToUser.outputContexts) {
         responseJson.outputContexts = responseToUser.outputContexts;
       }
-      if(responseToUser.followup_event_input){
-        responseJson.followup_event_input=responseToUser.followup_event_input;
+      if(responseToUser.followupEvent){
+        responseJson.followupEvent=responseToUser.followupEvent;
       }
       // Send the response to Dialogflow
       console.log('Response to Dialogflow: ' + JSON.stringify(responseJson));
