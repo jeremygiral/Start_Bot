@@ -30,9 +30,9 @@ function processV2Request (request, response) {
 
   var outputContexts = request.body.queryResult.outputContexts || "ya rien"; // https://dialogflow.com/docs/contexts
   outputContexts.forEach(function(con){
-    console.log(con.name.slice(-con.name.lenght+8+con.name.indexOf("contexts/")));
+    console.log(con.name.substr(con.name.indexOf("contexts/")+8,con.name.lenght));
   });
-  console.log('Contexts ' + JSON.stringify(outputContexts));
+  //console.log('Contexts ' + JSON.stringify(outputContexts));
   // Get the request source (Google Assistant, Slack, API, etc)
   var requestSource = (request.body.originalDetectIntentRequest) ? request.body.originalDetectIntentRequest.source : undefined;
   // Get the session ID to differentiate calls from different users
