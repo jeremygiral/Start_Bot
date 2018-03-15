@@ -26,8 +26,8 @@ function processV2Request (request, response) {
   // Parameters are any entites that Dialogflow has extracted from the request.
   var parameters = request.body.queryResult.parameters || {}; // https://dialogflow.com/docs/actions-and-parameters
   // Contexts are objects used to track and store conversation state
-  var inputContexts = request.body.queryResult.contexts; // https://dialogflow.com/docs/contexts
-  console.log(inputContexts);
+  var inputContexts = request.body.queryResult.contexts || "ya rien"; // https://dialogflow.com/docs/contexts
+  console.log('Contexts ' + JSON.stringify(inputContexts));
   // Get the request source (Google Assistant, Slack, API, etc)
   var requestSource = (request.body.originalDetectIntentRequest) ? request.body.originalDetectIntentRequest.source : undefined;
   // Get the session ID to differentiate calls from different users
