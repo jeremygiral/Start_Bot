@@ -13,9 +13,9 @@ router.use(bodyParser.json());
 router.post("/echo", function(req, res) {
   console.log(req.body.queryResult.queryText);
   if (req.body.queryResult.queryText){
-    /*var rep1=req.body.queryResult.queryText;
-    if (rep1.toLowerCase==="oui"){
-
+    var rep1=req.body.queryResult.queryText.toLowerCase;
+    console.log(rep1);
+    if (rep1==="oui"){
       console.log("ok webhook oui");
       return res.json({
         "followup_event_input": {
@@ -38,12 +38,9 @@ router.post("/echo", function(req, res) {
           }
         }
       });
-    }*/
+    }
   }
-  return res.json({
-    speech: "Ni l'un ni l'autre",
-    displayText: "Ni l'un ni l'autre"
-  });
+
 });
 
 module.exports = router;
