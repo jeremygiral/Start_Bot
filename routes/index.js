@@ -48,7 +48,7 @@ function processV2Request (request, response) {
          "followup_event_input": {
            name: "FNoon",
            parameters: {
-             "paramOui": "Ouiiiiiiiiiii"
+             "paramNon": "Ouiiiiiiiiiii"
            }
          }
            /*"followup_event_input": {
@@ -78,7 +78,7 @@ function processV2Request (request, response) {
       // If the response to the user includes rich responses or contexts send them to Dialogflow
       var responseJson = {};
       // Define the text response
-      responseJson.fulfillmentText = responseToUser.fulfillmentText;
+      responseJson.fulfillmentText = "test" || responseToUser.fulfillmentText;
       // Optional: add rich messages for integrations (https://dialogflow.com/docs/rich-messages)
       if (responseToUser.fulfillmentMessages) {
         responseJson.fulfillmentMessages = responseToUser.fulfillmentMessages;
