@@ -48,7 +48,7 @@ function processV2Request (request, response) {
          "followup_event_input": {
            name: "FNoon",
            parameters: {
-             paramNon:"Ouiiiiiiiiiii"
+             "paramOui": "Ouiiiiiiiiiii"
            }
          }
            /*"followup_event_input": {
