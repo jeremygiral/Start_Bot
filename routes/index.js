@@ -48,7 +48,7 @@ function processV2Request (request, response) {
          "followup_event_input": {
            name: "FNon",
            parameters: {
-             paramNon: rep1
+             paramNon: req.body.queryResult.queryText
            }
          }
         //fulfillmentMessages: richResponsesV2, // Optional, uncomment to enable
