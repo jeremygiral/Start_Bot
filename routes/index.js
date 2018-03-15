@@ -11,9 +11,9 @@ router.use(
 router.use(bodyParser.json());
 
 router.post("/echo", function(req, res) {
-  console.log(req.body);
-  if (req.body.result.parameters.Reponse1){
-    var rep1=req.body.result.parameters.Reponse1
+  console.log(req.body.queryResult.queryText);
+  if (req.body.queryResult.queryText){
+    var rep1=req.body.queryResult.queryText
     if (rep1.toLowerCase==="oui"){
       /*return res.json({
       speech: "Très bien, où en êtes vous dans la construction de votre Business Plan ? ( Commencement/ En Cours / En finition )",
