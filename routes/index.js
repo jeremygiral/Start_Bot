@@ -47,7 +47,7 @@ function processV2Request (request, response) {
        responseToUser = {
         //fulfillmentMessages: richResponsesV2, // Optional, uncomment to enable
         //outputContexts: [{ 'name': `${session}/contexts/weather`, 'lifespanCount': 2, 'parameters': {'city': 'Rome'} }], // Optional, uncomment to enable
-       var fulfillmentText: 'This is from Dialogflow\'s Cloud Functions for Firebase editor! :-)' // displayed response
+       fulfillmentText: 'This is from Dialogflow\'s Cloud Functions for Firebase editor! :-)' // displayed response
       };
       sendResponse(responseToUser);
     }
