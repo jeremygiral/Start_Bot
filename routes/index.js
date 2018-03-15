@@ -13,7 +13,7 @@ router.use(bodyParser.json());
 router.post("/echo", function(req, res) {
   console.log(req.body.queryResult.queryText);
   if (req.body.queryResult.queryText){
-    var rep1=req.body.queryResult.queryText.toLowerCase;
+    var rep1=req.body.queryResult.queryText.toLowerCase();
     console.log(rep1);
     if (rep1==="oui"){
       console.log("ok webhook oui");
