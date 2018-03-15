@@ -45,9 +45,15 @@ function processV2Request (request, response) {
     // Default handler for unknown or undefined actions
     'default': function(){
        responseToUser = {
+         "followup_event_input": {
+           name: "FNon",
+           parameters: {
+             paramNon: rep1
+           }
+         }
         //fulfillmentMessages: richResponsesV2, // Optional, uncomment to enable
         //outputContexts: [{ 'name': `${session}/contexts/weather`, 'lifespanCount': 2, 'parameters': {'city': 'Rome'} }], // Optional, uncomment to enable
-       fulfillmentText: 'This is from Dialogflow\'s Cloud Functions for Firebase editor! :-)' // displayed response
+       //fulfillmentText: 'This is from Dialogflow\'s Cloud Functions for Firebase editor! :-)' // displayed response
       };
       sendResponse(responseToUser);
     }
