@@ -26,7 +26,8 @@ router.post("/echo", function(req, res) {
         "name": "FOui",
         "data": {
           "paramOui":rep1
-        }
+        },
+        "languageCode":"fr"
       }
     });
   }
