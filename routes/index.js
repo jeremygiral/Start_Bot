@@ -21,8 +21,7 @@ router.post("/echo", function(req, res) {
     });*/
     console.log("ok webhook oui");
     return res.json({
-      "source":"webhook",
-      "followupEventInput": {
+      "followup_event_input": {
         "name": "FOui",
         "data": {
           "paramOui":rep1
