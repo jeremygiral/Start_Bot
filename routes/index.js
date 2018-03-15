@@ -22,15 +22,15 @@ router.post("/echo", function(req, res) {
       console.log("ok webhook oui");
       return res.json({
         "followup_event_input": {
-          "name": "FOui",
-          "data": {
-            "paramOui":rep1
-          },
-          "languageCode":"fr"
+          name: "FOui",
+          parameters: {
+            paramOui: rep1
+          }
         }
       });
     }
     else {
+
       /*return res.json({
       speech: "Très bien, où en êtes vous dans la construction de votre Business Plan ? ( Commencement/ En Cours / En finition )",
       displayText: speech+'\n'+testparam+'\n'+testaction+'\n'+testcontext,
@@ -38,11 +38,10 @@ router.post("/echo", function(req, res) {
 
       return res.json({
         "followup_event_input": {
-          "name": "FNon",
-          "data": {
-            "paramNon":rep1
-          },
-          "languageCode":"fr"
+          name: "FNon",
+          parameters: {
+            paramNon: rep1
+          }
         }
       });
     }
