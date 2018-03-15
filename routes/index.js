@@ -83,6 +83,9 @@ function processV2Request (request, response) {
       if (responseToUser.outputContexts) {
         responseJson.outputContexts = responseToUser.outputContexts;
       }
+      if(responseToUser.followup_event_input){
+        responseJson.followup_event_input=responseToUser.followup_event_input;
+      }
       // Send the response to Dialogflow
       console.log('Response to Dialogflow: ' + JSON.stringify(responseJson));
       response.json(responseJson);
