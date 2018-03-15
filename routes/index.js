@@ -46,11 +46,10 @@ router.post("/echo", function(req, res) {
       });
     }
   }
-/*return res.json({
-  speech: speech,
-  displayText: speech+'\n'+testparam+'\n'+testaction+'\n'+testcontext,
-  source: "webhook-echo-sample"
-});*/
+  return res.json({
+    speech: "Ni l'un ni l'autre",
+    displayText: "Ni l'un ni l'autre"
+  });
 });
 
 module.exports = router;
