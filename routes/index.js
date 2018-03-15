@@ -27,6 +27,7 @@ function processV2Request (request, response) {
   var parameters = request.body.queryResult.parameters || {}; // https://dialogflow.com/docs/actions-and-parameters
   // Contexts are objects used to track and store conversation state
   var inputContexts = request.body.queryResult.contexts; // https://dialogflow.com/docs/contexts
+  console.log(inputContexts);
   // Get the request source (Google Assistant, Slack, API, etc)
   var requestSource = (request.body.originalDetectIntentRequest) ? request.body.originalDetectIntentRequest.source : undefined;
   // Get the session ID to differentiate calls from different users
@@ -45,22 +46,14 @@ function processV2Request (request, response) {
     // Default handler for unknown or undefined actions
     'default': function(){
        responseToUser = {
-         "followup_event_input": {
-           name: "FNoon",
-           parameters: {
-             "paramOui": "Ouiiiiiiiiiii"
-           }
-         }
-           /*"followup_event_input": {
-             "name": "Welcome"
-           }*/
-
         //fulfillmentMessages: richResponsesV2, // Optional, uncomment to enable
         //outputContexts: [{ 'name': `${session}/contexts/weather`, 'lifespanCount': 2, 'parameters': {'city': 'Rome'} }], // Optional, uncomment to enable
-       //fulfillmentText: 'This is from Dialogflow\'s Cloud Functions for Firebase editor! :-)' // displayed response
+        fulfillmentText: 'This is from Dialogflow\'s Cloud Functions for Firebase editor! :-)' // displayed response
       };
       sendResponse(responseToUser);
-    }
+    },
+
+    // METTRE ICI LES DIFFERENTES ACTIONS ET LES RESPONSES A ENVOYER
   };
   // If undefined or unknown action use the default handler
   if (!actionHandlers[action]) {
