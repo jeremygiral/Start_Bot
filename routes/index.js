@@ -13,12 +13,9 @@ router.use(bodyParser.json());
 router.post("/echo", function(req, res) {
   console.log(req.body.queryResult.queryText);
   if (req.body.queryResult.queryText){
-    var rep1=req.body.queryResult.queryText;
+    /*var rep1=req.body.queryResult.queryText;
     if (rep1.toLowerCase==="oui"){
-      /*return res.json({
-      speech: "Très bien, où en êtes vous dans la construction de votre Business Plan ? ( Commencement/ En Cours / En finition )",
-      displayText: speech+'\n'+testparam+'\n'+testaction+'\n'+testcontext,
-    });*/
+
       console.log("ok webhook oui");
       return res.json({
         "followup_event_input": {
@@ -31,10 +28,7 @@ router.post("/echo", function(req, res) {
     }
     else {
 
-      /*return res.json({
-      speech: "Très bien, où en êtes vous dans la construction de votre Business Plan ? ( Commencement/ En Cours / En finition )",
-      displayText: speech+'\n'+testparam+'\n'+testaction+'\n'+testcontext,
-    });*/
+
 
       return res.json({
         "followup_event_input": {
@@ -44,7 +38,7 @@ router.post("/echo", function(req, res) {
           }
         }
       });
-    }
+    }*/
   }
   return res.json({
     speech: "Ni l'un ni l'autre",
