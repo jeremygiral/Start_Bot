@@ -21,21 +21,10 @@ router.post("/echo", function(req, res) {
     });*/
     console.log("ok webhook oui");
     return res.json({
-      "fulfillmentText": "",
-      "fulfillmentMessages": [],
-      "outputContexts": [],
       "followupEventInput": {
         "name": "FOui",
         "data": {
           "paramOui":rep1
-        }
-      },
-      {
-        "followupEvent": {
-          "name": "FOui",
-          "data": {
-            "paramOui":rep1
-          }
         }
       }
     });
