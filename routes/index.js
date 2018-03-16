@@ -76,8 +76,15 @@ function processV2Request (request, response) {
   const actionHandlers = {
     // The default welcome intent has been matched, welcome the user (https://dialogflow.com/docs/events#default_welcome_intent)
     'input.welcome': function(){
-      sendResponse('Bonjour, Bienvenue sur l\'Assistant Conversationnel StartBot. Je suis conçu pour vous accompagner dans la création de votre Business Plan ! Connaissez-vous ce qu\'est un Business Plan ? '); // Send simple response to user
-    },
+      responseToUser = {
+        "followup_event_input": {
+          name: "Avancement",
+          parameters: {
+            paramKnow: parameters.paramKnow
+          }
+        }
+      };
+      sendResponse(responseToUser);    },
     // The default fallback intent has been matched, try to recover (https://dialogflow.com/docs/intents#fallback_intents)
     'input.unknown': function(){
       // Use the Actions on Google lib to respond to Google requests; for other requests use JSON
