@@ -74,10 +74,7 @@ function processV2Request (request, response) {
     'input.welcome': function(){
       responseToUser = {
         "followup_event_input": {
-          name: "Avancement",
-          parameters: {
-            paramKnow: parameters.paramKnow
-          }
+          name: "Avancement_evt"
         }
       };
       sendResponse(responseToUser);    },
