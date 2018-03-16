@@ -27,12 +27,42 @@ function processV2Request (request, response) {
   var parameters = request.body.queryResult.parameters || {}; // https://dialogflow.com/docs/actions-and-parameters
   // Contexts are objects used to track and store conversation state
   var inputContexts = request.body.queryResult.contexts;
+  inputContexts.forEach(function(conn){
+    Contexts.push(conn.name.substr(conn.name.indexOf("contexts/")+9,conn.name.lenght))
+  });
   var Contexts=[];
   var outputContexts = request.body.queryResult.outputContexts || "ya rien"; // https://dialogflow.com/docs/contexts
   outputContexts.forEach(function(con){
-    Contexts.push(con.name.substr(con.name.indexOf("contexts/")+9,con.name.lenght));
+    Contexts.push(con.name.substr(con.name.indexOf("contexts/")+9,con.name.lenght))
+  }).then(function(cons){
+    if(cons.indexOf("Acceuil")>-1){
+      if(parameters.paramKnow==="Oui"){
+        action="Avancement";
+      } else {
+        action="ExplicationBP";
+      }
+    }else if (cons.indexOf("KnowOui_context")>-1) {
+      action="Avancement";
+    }else if (cons.indexOf("KnowNon_context")>-1) {
+      action="ExplicationBP";
+    }else if (cons.indexOf("")>-1) {
+      action="Ressource";
+    }else if (cons.indexOf("")>-1) {
+      action="CommencementBP";
+    }else if (cons.indexOf("")>-1) {
+      action="EnCoursBP";
+    }else if (cons.indexOf("")>-1) {
+      action="FiniBP";
+    }else if (cons.indexOf("")>-1) {
+      action="InfoPerso1";
+    }else if (cons.indexOf("")>-1) {
+      action="InfoPerso2";
+    }
+
+  }, function (err) {
+    console.error('Erreur !');
+    console.dir(err);
   });
-  console.log(Contexts);
   //console.log('Contexts ' + JSON.stringify(outputContexts));
   // Get the request source (Google Assistant, Slack, API, etc)
   var requestSource = (request.body.originalDetectIntentRequest) ? request.body.originalDetectIntentRequest.source : undefined;
@@ -42,15 +72,79 @@ function processV2Request (request, response) {
   const actionHandlers = {
     // The default welcome intent has been matched, welcome the user (https://dialogflow.com/docs/events#default_welcome_intent)
     'input.welcome': function(){
-      sendResponse('Hello, Welcome to my Dialogflow agent!'); // Send simple response to user
+      sendResponse('Bonjour, Bienvenue sur l\'Assistant Conversationnel StartBot. Je suis conçu pour vous accompagner dans la création de votre Business Plan ! Connaissez-vous ce qu\'est un Business Plan ? '); // Send simple response to user
     },
     // The default fallback intent has been matched, try to recover (https://dialogflow.com/docs/intents#fallback_intents)
     'input.unknown': function(){
       // Use the Actions on Google lib to respond to Google requests; for other requests use JSON
-      sendResponse('I\'m having trouble, can you try that again?'); // Send simple response to user
+      sendResponse('Je n\'ai pas bien compris, pouvez-vous répéter ?'); // Send simple response to user
     },
     // Default handler for unknown or undefined actions
-    'default': function(){
+    'Avancement': function(){
+       responseToUser = {
+        //fulfillmentMessages: richResponsesV2, // Optional, uncomment to enable
+        //outputContexts: [{ 'name': `${session}/contexts/weather`, 'lifespanCount': 2, 'parameters': {'city': 'Rome'} }], // Optional, uncomment to enable
+        fulfillmentText: 'This is from Dialogflow\'s Cloud Functions for Firebase editor! :-)' // displayed response
+      };
+      sendResponse(responseToUser);
+    },
+    'ExplicationBP': function(){
+       responseToUser = {
+        //fulfillmentMessages: richResponsesV2, // Optional, uncomment to enable
+        //outputContexts: [{ 'name': `${session}/contexts/weather`, 'lifespanCount': 2, 'parameters': {'city': 'Rome'} }], // Optional, uncomment to enable
+        fulfillmentText: 'This is from Dialogflow\'s Cloud Functions for Firebase editor! :-)' // displayed response
+      };
+      sendResponse(responseToUser);
+    },
+    'Ressource': function(){
+       responseToUser = {
+        //fulfillmentMessages: richResponsesV2, // Optional, uncomment to enable
+        //outputContexts: [{ 'name': `${session}/contexts/weather`, 'lifespanCount': 2, 'parameters': {'city': 'Rome'} }], // Optional, uncomment to enable
+        fulfillmentText: 'This is from Dialogflow\'s Cloud Functions for Firebase editor! :-)' // displayed response
+      };
+      sendResponse(responseToUser);
+    },
+    'CommencementBP': function(){
+       responseToUser = {
+        //fulfillmentMessages: richResponsesV2, // Optional, uncomment to enable
+        //outputContexts: [{ 'name': `${session}/contexts/weather`, 'lifespanCount': 2, 'parameters': {'city': 'Rome'} }], // Optional, uncomment to enable
+        fulfillmentText: 'This is from Dialogflow\'s Cloud Functions for Firebase editor! :-)' // displayed response
+      };
+      sendResponse(responseToUser);
+    },
+    'EnCoursBP': function(){
+       responseToUser = {
+        //fulfillmentMessages: richResponsesV2, // Optional, uncomment to enable
+        //outputContexts: [{ 'name': `${session}/contexts/weather`, 'lifespanCount': 2, 'parameters': {'city': 'Rome'} }], // Optional, uncomment to enable
+        fulfillmentText: 'This is from Dialogflow\'s Cloud Functions for Firebase editor! :-)' // displayed response
+      };
+      sendResponse(responseToUser);
+    },
+    'FiniBP': function(){
+       responseToUser = {
+        //fulfillmentMessages: richResponsesV2, // Optional, uncomment to enable
+        //outputContexts: [{ 'name': `${session}/contexts/weather`, 'lifespanCount': 2, 'parameters': {'city': 'Rome'} }], // Optional, uncomment to enable
+        fulfillmentText: 'This is from Dialogflow\'s Cloud Functions for Firebase editor! :-)' // displayed response
+      };
+      sendResponse(responseToUser);
+    },
+    'EncoreRessource': function(){
+       responseToUser = {
+        //fulfillmentMessages: richResponsesV2, // Optional, uncomment to enable
+        //outputContexts: [{ 'name': `${session}/contexts/weather`, 'lifespanCount': 2, 'parameters': {'city': 'Rome'} }], // Optional, uncomment to enable
+        fulfillmentText: 'This is from Dialogflow\'s Cloud Functions for Firebase editor! :-)' // displayed response
+      };
+      sendResponse(responseToUser);
+    },
+    'InfoPerso1': function(){
+       responseToUser = {
+        //fulfillmentMessages: richResponsesV2, // Optional, uncomment to enable
+        //outputContexts: [{ 'name': `${session}/contexts/weather`, 'lifespanCount': 2, 'parameters': {'city': 'Rome'} }], // Optional, uncomment to enable
+        fulfillmentText: 'This is from Dialogflow\'s Cloud Functions for Firebase editor! :-)' // displayed response
+      };
+      sendResponse(responseToUser);
+    },
+    'InfoPerso2': function(){
        responseToUser = {
         //fulfillmentMessages: richResponsesV2, // Optional, uncomment to enable
         //outputContexts: [{ 'name': `${session}/contexts/weather`, 'lifespanCount': 2, 'parameters': {'city': 'Rome'} }], // Optional, uncomment to enable
