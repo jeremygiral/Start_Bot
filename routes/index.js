@@ -36,36 +36,32 @@ function processV2Request (request, response) {
   var outputContexts = request.body.queryResult.outputContexts || "ya rien"; // https://dialogflow.com/docs/contexts
   outputContexts.forEach(function(con){
     Contexts.push(con.name.substr(con.name.indexOf("contexts/")+9,con.name.lenght))
-  }).then(function(cons){
-    console.log(cons);
-    if(cons.indexOf("Acceuil")>-1){
-      if(parameters.paramKnow==="Oui"){
-        action="Avancement";
-      } else {
-        action="ExplicationBP";
-      }
-    }else if (cons.indexOf("KnowOui_context")>-1) {
-      action="Avancement";
-    }else if (cons.indexOf("KnowNon_context")>-1) {
-      action="ExplicationBP";
-    }/*else if (cons.indexOf("")>-1) {
-      action="Ressource";
-    }else if (cons.indexOf("")>-1) {
-      action="CommencementBP";
-    }else if (cons.indexOf("")>-1) {
-      action="EnCoursBP";
-    }else if (cons.indexOf("")>-1) {
-      action="FiniBP";
-    }else if (cons.indexOf("")>-1) {
-      action="InfoPerso1";
-    }else if (cons.indexOf("")>-1) {
-      action="InfoPerso2";
-    }*/
-
-  }, function (err) {
-    console.error('Erreur !');
-    console.log(err);
   });
+  console.log(cons);
+  if(cons.indexOf("Acceuil")>-1){
+    if(parameters.paramKnow==="Oui"){
+      action="Avancement";
+    } else {
+      action="ExplicationBP";
+    }
+  }/*else if (cons.indexOf("KnowOui_context")>-1) {
+    action="Avancement";
+  }else if (cons.indexOf("KnowNon_context")>-1) {
+    action="ExplicationBP";
+  }else if (cons.indexOf("")>-1) {
+    action="Ressource";
+  }else if (cons.indexOf("")>-1) {
+    action="CommencementBP";
+  }else if (cons.indexOf("")>-1) {
+    action="EnCoursBP";
+  }else if (cons.indexOf("")>-1) {
+    action="FiniBP";
+  }else if (cons.indexOf("")>-1) {
+    action="InfoPerso1";
+  }else if (cons.indexOf("")>-1) {
+    action="InfoPerso2";
+  }*/
+
   console.log(action);
   //console.log('Contexts ' + JSON.stringify(outputContexts));
   // Get the request source (Google Assistant, Slack, API, etc)
