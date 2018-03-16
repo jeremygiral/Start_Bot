@@ -38,27 +38,27 @@ function processV2Request (request, response) {
     Contexts.push(con.name.substr(con.name.indexOf("contexts/")+9,con.name.lenght))
   });
   console.log(cons);
-  if(cons.indexOf("Acceuil")>-1){
+  if(Contexts.indexOf("Acceuil")>-1){
     if(parameters.paramKnow==="Oui"){
       action="Avancement";
     } else {
       action="ExplicationBP";
     }
-  }/*else if (cons.indexOf("KnowOui_context")>-1) {
+  }/*else if (Contexts.indexOf("KnowOui_context")>-1) {
     action="Avancement";
-  }else if (cons.indexOf("KnowNon_context")>-1) {
+  }else if (Contexts.indexOf("KnowNon_context")>-1) {
     action="ExplicationBP";
-  }else if (cons.indexOf("")>-1) {
+  }else if (Contexts.indexOf("")>-1) {
     action="Ressource";
-  }else if (cons.indexOf("")>-1) {
+  }else if (Contexts.indexOf("")>-1) {
     action="CommencementBP";
-  }else if (cons.indexOf("")>-1) {
+  }else if (Contexts.indexOf("")>-1) {
     action="EnCoursBP";
-  }else if (cons.indexOf("")>-1) {
+  }else if (Contexts.indexOf("")>-1) {
     action="FiniBP";
-  }else if (cons.indexOf("")>-1) {
+  }else if (Contexts.indexOf("")>-1) {
     action="InfoPerso1";
-  }else if (cons.indexOf("")>-1) {
+  }else if (Contexts.indexOf("")>-1) {
     action="InfoPerso2";
   }*/
 
