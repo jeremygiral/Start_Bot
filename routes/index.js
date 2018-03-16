@@ -37,7 +37,7 @@ function processV2Request (request, response) {
   outputContexts.forEach(function(con){
     Contexts.push(con.name.substr(con.name.indexOf("contexts/")+9,con.name.lenght))
   });
-  console.log(cons);
+  console.log(Contexts);
   if(Contexts.indexOf("Acceuil")>-1){
     if(parameters.paramKnow==="Oui"){
       action="Avancement";
