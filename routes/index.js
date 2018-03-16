@@ -26,7 +26,7 @@ function processV2Request (request, response) {
   // Parameters are any entites that Dialogflow has extracted from the request.
   var parameters = request.body.queryResult.parameters || {}; // https://dialogflow.com/docs/actions-and-parameters
   // Contexts are objects used to track and store conversation state
-  var inputContexts = request.body.queryResult.contexts;
+  var inputContexts = request.body.queryResult.contexts || [];
   var ContextsI =[];
   inputContexts.forEach(function(conn){
     ContextsI.push(conn.name.substr(conn.name.indexOf("contexts/")+9,conn.name.lenght))
