@@ -27,14 +27,17 @@ function processV2Request (request, response) {
   var parameters = request.body.queryResult.parameters || {}; // https://dialogflow.com/docs/actions-and-parameters
   // Contexts are objects used to track and store conversation state
   var inputContexts = request.body.queryResult.contexts;
+  var ContextsI =[];
   inputContexts.forEach(function(conn){
-    Contexts.push(conn.name.substr(conn.name.indexOf("contexts/")+9,conn.name.lenght))
+    ContextsI.push(conn.name.substr(conn.name.indexOf("contexts/")+9,conn.name.lenght))
   });
+  console.log(ContextsI);
   var Contexts=[];
   var outputContexts = request.body.queryResult.outputContexts || "ya rien"; // https://dialogflow.com/docs/contexts
   outputContexts.forEach(function(con){
     Contexts.push(con.name.substr(con.name.indexOf("contexts/")+9,con.name.lenght))
   }).then(function(cons){
+    console.log(cons);
     if(cons.indexOf("Acceuil")>-1){
       if(parameters.paramKnow==="Oui"){
         action="Avancement";
@@ -45,7 +48,7 @@ function processV2Request (request, response) {
       action="Avancement";
     }else if (cons.indexOf("KnowNon_context")>-1) {
       action="ExplicationBP";
-    }else if (cons.indexOf("")>-1) {
+    }/*else if (cons.indexOf("")>-1) {
       action="Ressource";
     }else if (cons.indexOf("")>-1) {
       action="CommencementBP";
@@ -57,12 +60,13 @@ function processV2Request (request, response) {
       action="InfoPerso1";
     }else if (cons.indexOf("")>-1) {
       action="InfoPerso2";
-    }
+    }*/
 
   }, function (err) {
     console.error('Erreur !');
-    console.dir(err);
+    console.log(err);
   });
+  console.log(action);
   //console.log('Contexts ' + JSON.stringify(outputContexts));
   // Get the request source (Google Assistant, Slack, API, etc)
   var requestSource = (request.body.originalDetectIntentRequest) ? request.body.originalDetectIntentRequest.source : undefined;
